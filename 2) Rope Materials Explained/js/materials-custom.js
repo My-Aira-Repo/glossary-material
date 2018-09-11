@@ -3,6 +3,7 @@ jQuery(document).ready(function($) {
     var tabelContent = "";
     // var url = "/wp-content/themes/emallshop/js/terminology/";
     var imgUrl = "";
+    var $material = [];
     var info_types = [
       "material",
       "uv-resistance",
@@ -12,8 +13,8 @@ jQuery(document).ready(function($) {
       "chemical-resistance",
       "abrasion-resistance",
       "common-uses"
-	];
-	var $material = [];
+    ];
+	
 
 
     Papa.parse("./assets/data.csv", {
@@ -32,10 +33,13 @@ jQuery(document).ready(function($) {
                 tabelContent += `<td data-attr="${val[types]}">${val[types]}</td>`; 
               });
             tabelContent += "</tr>";
-            
+            console.log(val["abrasion-resistance"]);
           });
           
-		$(".results").html(tabelContent);
+    $(".results").html(tabelContent);
+    
+    
+    
 		
 		  /****** CREATE TABLE END **********/
 		  
