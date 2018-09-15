@@ -1,9 +1,8 @@
 jQuery(document).ready(function($) {
-  
-    var tabelContent = "";
+
     // var url = "/wp-content/themes/emallshop/js/terminology/";
     var imgUrl = "";
-    var $material = [];
+    var tableData = {};
     var info_types = [
       "material",
       "uv-resistance",
@@ -14,115 +13,96 @@ jQuery(document).ready(function($) {
       "abrasion-resistance",
       "common-uses"
     ];
-	
 
+    function create_table() {
+
+      var tabelContent = "";
+
+      $.each(getFilteredTable(), function(index, val) {
+        tabelContent += "<tr class='item'>";
+        info_types.forEach(function(types) {
+          tabelContent += `<td data-attr="${val[types]}">${val[types]}</td>`;
+        });
+        tabelContent += "</tr>";
+      });
+
+      $(".results").html(tabelContent);
+    }
+
+    function get_filter_selection() {
+
+      var filters = {};
+      $("tr.aira-filter select").each(function() {
+        filters[$(this).attr("id")] = $(this).val();
+      });
+      return filters;
+    }
+
+    function getFilteredTable() {
+      var filters = get_filter_selection();
+      var temp = [];
+      // console.log(tableData);
+
+      $.each(tableData, function( index, row) {
+        var show = true;
+        $.each(filters, function(key, type) {
+            if (type !== "") {
+              if (type !== row[key]) {
+                show = false;
+              }
+            }
+        });
+        if (show) {
+          temp.push(row);
+        }
+      });
+      // console.log(temp)
+      return temp;
+    }
+
+    function create_filter() {
+
+      var options = {};
+      $.each(tableData, function (index, row) {
+        info_types.forEach(type => {
+          if ($.inArray(row[type], options[type]) == -1) {
+            if (typeof options[type] == "undefined") {
+              options[type] = [];
+            }
+            options[type].push(row[type]);
+          }
+        });
+      });
+
+      $.each(options, function(key, material) {
+          var list = '';
+          $.each(material, function (i, value) {
+            list += `<option value="${value}">${value}</option>`;
+          });
+          $(`#${key}`).append(list);
+      });
+
+    }
+
+    $('tr.aira-filter select').on('change', function () {
+//      console.log(get_filter_selection());
+      create_table();
+    });
 
     Papa.parse("./assets/data.csv", {
       download: !0,
       header: !0,
       skipEmptyLines: true,
-      error: function (err, file, inputElem, reason) 
+      error: function (err, file, inputElem, reason)
           { console.log(err, file, inputElem, reason); },
       complete: function (results) {
 
-		/****** CREATE TABLE *************/
-		
-		$.each(results.data, function (index, val) {
-      tabelContent += "<tr class='item'>";
-        info_types.forEach(function(types) {
-          tabelContent += `<td data-attr="${val[types]}">${val[types]}</td>`; 
-        });
-      tabelContent += "</tr>";
-    });
-          
-    $(".results").html(tabelContent);
-
-    var $filter = {};
-    
-    $.each(results.data, function (index, val) {
-      console.log(val["material"]);
-      
-      info_types.forEach(function(types) {
-        $filter[types] = val[types];
-      });
-    
-    });
-
-    console.log($filter);
-
-    /****** CREATE TABLE END **********/
-		  
-		$.each(results.data, function(index, val) {
-        if ($.inArray(val["material"], $material) == -1) {
-          $material.push(val["material"]);
-        }
-      });
-        
-      $.each($material, function(i, value) {
-        $list += `<option value="${value}">${value}</option>`;
-      });
-
-      $("#material").append($list);
-          
+          tableData = results.data;
+          create_filter();
+          create_table();
+          // console.log(get_filter_selection());
       }
     });
-
-
-  var tabelContent = "";
-  var $rates = ["Poor", "Low", "Fair", "Good", "Excellent"];
-  var $rate_list = "";
-  var $list = "";
-
-
-
-  /****** CREATE FILTERS **********/
-
-  $("#material").change(function() {
-    $(".results .item").fadeOut("fast");
-    if ($(this).val() == "filter") {
-      $(".results .item").fadeIn("slow");
-    } else {
-      $("tbody")
-        .find('td[data-attr="' + $(this).val() + '"]')
-        .each(function() {
-          $(".results ").append( $(this).parent().fadeIn("slow") );
-        });
-    }
-  });
-
-  /****** CREATE FILTERS END *******/
-
-  /****** CREATE RATE FILTERS **********/
-
-  $.each($rates, function(i, value) {
-    $rate_list += '<option value="' + value + '">' + value + "</option>";
-  });
-
-  $.each(info_types, function(i, elem) {
-    if (i === 0) return;
-    $("#" + elem).append($rate_list);
-  });
-
-
-  $.each(info_types, function(i, value) {
-    i += 1;
-    if (value === "material") return;
-    $("#" + value).change(function() {
-      $(".results .item").fadeOut("fast");
-      if ($(this).val() == "filter") {
-        $(".results .item").fadeIn("slow");
-      } else {
-        $("tbody")
-          .find("td:nth-child(" + i + ')[data-attr="' + $(this).val() + '"]')
-          .each(function() {
-            // console.log( $(this).parent().html() );
-            $(".results").append( $(this).parent().fadeIn("slow") );
-          });
-      }
-    });
-  });
-
-  /**** CREATE RATE FILTERS END ******/
 
   /********* SHOW MODAL *********/
 
@@ -151,17 +131,3 @@ jQuery(document).ready(function($) {
   /********* SHOW MODAL END ******/
 
 });
-
-// var $filters = {};
-
-// // $.each(results.data, function (index, val) {
-// //   console.log(val);
-// // });
-
-// $filters['material'] = "valami";
-// $filters['industry'] = "valami";
-
-// console.log($filters);
-
-
-// console.log($("tr.item"));
