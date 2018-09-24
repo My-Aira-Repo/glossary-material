@@ -38,3 +38,71 @@ td > img {
 td:last-child img {
     text-align: center;
 }
+
+img.emoji {
+    width: 25px;
+    /* text-align: left; */
+    float: right;
+    margin-top: -30px;
+    margin-left: -20px;
+    z-index: 500;
+    position: relative;
+}
+
+/***************************************
+**               MODAL
+***************************************/
+.term-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 999; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.aira-modal-content {
+    background-color: #ffffff;
+    margin: 10% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 15px solid #ddd;
+    border-radius: 25px;
+    width: 35%; /* Could be more or less, depending on screen size */
+}
+
+/* Modal Content/Box */
+.term-img-modal {
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+}
+
+/* The Close Button */
+.term-img-close {
+    float: right;
+    font-size: 35px;
+    font-weight: 900;
+    line-height: 1;
+    color: #dd5e11;
+    margin-top: -45px;
+    margin-right: -45px;
+    background: #fcf7f4;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    padding: 0px 7px;
+}
+
+.term-img-close:hover,
+.term-img-close:focus {    
+    color: #bbbbbb;
+    cursor: pointer;
+}
+
+/***************************************
+**            MODAL END
+***************************************/
