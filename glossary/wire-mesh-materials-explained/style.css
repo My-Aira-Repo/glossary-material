@@ -1,0 +1,118 @@
+body {
+    width: 1200px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+tr th {
+    background: #03ba48;  
+    color: #fff;
+    border: 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table tr:nth-child(odd) {
+    background: #e0e0e0;
+}
+
+table tr:nth-child(even) {
+    background: #fff;
+}
+
+table th, td {
+    vertical-align: middle;
+    padding: 5px;
+}
+
+td select {
+    padding: 0 5px;
+    width: 100%;
+}
+
+span.info {
+    border: 1px solid;
+    border-radius: 100%;
+    padding: 0px 5px;
+    font-weight: 900;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+/******** MODAL *******/
+/* The Modal (background) */
+.aira-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 999; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.aira-modal-content {
+    background-color: #ffffff;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 15px solid #ddd;
+    border-radius: 25px;
+    width: 35%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.aira-close {
+    float: right;
+    font-size: 35px;
+    font-weight: 900;
+    line-height: 1;
+    color: #dd5e11;
+    margin-top: -45px;
+    margin-right: -45px;
+    background: #fcf7f4;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    padding: 0px 7px;
+}
+
+.aira-close:hover,
+.aira-close:focus {
+    background: #b5b5b5;    
+    cursor: pointer;
+}
+
+.text-content {
+    width: 70%;
+    display: inline-block;
+    padding: 10px;
+}
+
+.img-content {
+    width: 25%;
+    display: inline-block;
+}
+
+.img-content img {
+    width: 150px;
+    height: auto;
+}
+
+.aira-modal-content.material,
+.aira-modal-content.uv-resistance,
+.aira-modal-content.buoyancy,
+.aira-modal-content.elongation,
+.aira-modal-content.melting-point,
+.aira-modal-content.chemical-resistance,
+.aira-modal-content.abrasion-resistance,
+.aira-modal-content.common-uses {
+    display: none;
+}
+
+/***** MODAL END ******/

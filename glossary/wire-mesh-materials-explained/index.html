@@ -13,47 +13,53 @@
         <thead>
             <tr>
                 <th>Material <span class="info material">i</span></th>
-                <th>UV Resistance <span class="info corrosion-resistant">i</span></th>
-                <th>Buoyancy <span class="info flexibility">i</span></th>
-                <th>Elongation <span class="info strength">i</span></th>
-                <th>Melting Point <span class="info resilience-and-toughness">i</span></th>
-                <th>Chemical Resistance <span class="info abrasion-resistance">i</span></th>
-                <th>Abrasion Resistance  <span class="info impact-resistant">i</span></th>
+                <th>UV Resistance <span class="info uv-resistance">i</span></th>
+                <th>Buoyancy <span class="info buoyancy">i</span></th>
+                <th>Elongation <span class="info elongation">i</span></th>
+                <th>Melting Point <span class="info melting-point">i</span></th>
+                <th>Chemical Resistance <span class="info chemical-resistance">i</span></th>
+                <th>Abrasion Resistance  <span class="info abrasion-resistance">i</span></th>
+                <th>Common Uses  <span class="info common-uses">i</span></th>
             </tr>
-            <tr class="aira-filter">
+            <tr>
                 <td>
                     <select name="" id="material">
-                        <option value="">Filter</option>
+                        <option value="filter">Filter</option>
                     </select>
                 </td>
                 <td>
-                    <select name="" id="corrosion-resistant">
-                        <option value="">Filter</option>
+                    <select name="" id="uv-resistance">
+                        <option value="filter">Filter</option>
                     </select>
                 </td>
                 <td>
-                    <select name="" id="flexibility">
-                        <option value="">Filter</option>
+                    <select name="" id="buoyancy">
+                        <option value="filter">Filter</option>
                     </select>
                 </td>
                 <td>
-                    <select name="" id="strength">
-                        <option value="">Filter</option>
+                    <select name="" id="elongation">
+                        <option value="filter">Filter</option>
                     </select>
                 </td>
                 <td>
-                    <select name="" id="resilience-and-toughness">
-                        <option value="">Filter</option>
+                    <select name="" id="melting-point">
+                        <option value="filter">Filter</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="" id="chemical-resistance">
+                        <option value="filter">Filter</option>
                     </select>
                 </td>
                 <td>
                     <select name="" id="abrasion-resistance">
-                        <option value="">Filter</option>
+                        <option value="filter">Filter</option>
                     </select>
                 </td>
                 <td>
-                    <select name="" id="impact-resistant">
-                        <option value="">Filter</option>
+                    <select name="" id="common-uses">
+                        <option value="filter">Filter</option>
                     </select>
                 </td>
             </tr>
@@ -180,8 +186,8 @@
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="js/papaparse.min.js"></script>
-    <script src="js/materials-custom.js"></script>
+    <script src="ddtf.js"></script>
+    <script src="custom.js"></script>
 </body>
 </html>
 
